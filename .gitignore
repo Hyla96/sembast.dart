@@ -18,9 +18,6 @@ data/out
 *.js.deps
 *.js.map
 
-# Include when developing application packages.
-pubspec.lock
-
 # Build by tests
 test/out
 test_out
@@ -29,6 +26,5 @@ test_out
 .local/
 
 # IDE
-.idea/
 *.iml
 .vscode/

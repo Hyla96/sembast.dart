@@ -911,7 +911,10 @@ class SembastDatabase extends Object
   Future jdbFullImport() async {
     /// read revision before.
     _jdbRevision = await _storageJdb!.getRevision();
-    await for (var entry in _storageJdb!.entries) {
+
+    final stream = _storageJdb!.entries.handleError((Object e) => throw (e));
+
+    await for (var entry in stream) {
       var record = ImmutableSembastRecordJdb(entry.record, entry.value,
           deleted: entry.deleted, revision: entry.id);
       _exportStat!.lineCount++;
